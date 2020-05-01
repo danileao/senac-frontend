@@ -3,10 +3,16 @@ import React, { useState, useEffect } from "react";
 import "./app.css";
 
 function App() {
-  const [aluno, setAluno] = useState({});
+  const valorInicial = {
+    nome: "",
+    email: "",
+    usuario: "",
+  };
+  const [aluno, setAluno] = useState(valorInicial);
+  const [alunos, setAlunos] = useState([]);
 
   useEffect(() => {
-    populaAluno();
+    // populaAluno();
 
     function populaAluno() {
       setAluno({
@@ -17,9 +23,59 @@ function App() {
     }
   }, []);
 
+  //map => recebe um array, transforma esse array, ele retorna um novo array
+  // const alunos = [
+  //   {id: 1, nome: 'Jose'},
+  //   {id: 2, nome: 'Manuel'}
+  // ];
+
+  // // O aluno 1 tem o nome Jose
+  // alunos.map(aluno => {
+  //   // return "O aluno " + aluno.id + " tem o nome " + aluno.nome
+  //   return `O aluno ${aluno.id} tem o nome ${aluno.nome}`
+  // })
+  // console.log(alunos)
+
+  /* 
+  Filter 
+
+  */
+
+  //  const alunosMapp = [
+  //      {id: 1, nome: 'Jose'},
+  //      {id: 2, nome: 'Manuel'}
+  //    ];
+
+  //    alunosMapp.filter(aluno => )
+
   function handleCadastrar(e) {
     e.preventDefault();
+    // console.log(aluno);
+    const alunosMap = [...alunos, aluno];
+    setAlunos(alunosMap);
+
+    // Limpar variavel aluno
+
+    setAluno(valorInicial);
+  }
+
+  function handleChange(event) {
+    setAluno({
+      ...aluno,
+      [event.target.name]: event.target.value,
+    });
+  }
+
+  function editarAluno(aluno) {
+    setAluno(aluno);
+  }
+
+  function editarNovoAluno() {
     console.log(aluno);
+    const indexAluno = alunos.findIndex((a) => a.email === aluno.email);
+
+    alunos[indexAluno] = aluno;
+    setAlunos([...alunos]);
   }
 
   return (
@@ -30,7 +86,9 @@ function App() {
           <span>Nome</span>
           <input
             type="text"
-            onChange={(e) => setAluno({ ...aluno, nome: e.target.value })}
+            name="nome"
+            value={aluno.nome}
+            onChange={handleChange}
           />
         </div>
 
@@ -38,7 +96,9 @@ function App() {
           <span>Usuário</span>
           <input
             type="text"
-            onChange={(e) => setAluno({ ...aluno, usuario: e.target.value })}
+            name="usuario"
+            value={aluno.usuario}
+            onChange={handleChange}
           />
         </div>
 
@@ -46,14 +106,37 @@ function App() {
           <span>E-mail</span>
           <input
             type="text"
-            onChange={(e) => setAluno({ ...aluno, email: e.target.value })}
+            name="email"
+            // readOnly // if email preenchido deixar readonly
+            value={aluno.email}
+            onChange={handleChange}
           />
         </div>
 
         <div className="row">
           <button>Cadastrar </button>
+          <button type="button" onClick={editarNovoAluno}>
+            Editar
+          </button>
         </div>
       </form>
+
+      <hr />
+      <h2>Listagem de alunos</h2>
+
+      <ul>
+        {alunos.map((aluno) => (
+          <li key={aluno.email}>
+            <span>Nome:</span> {aluno.nome}
+            <br />
+            <span>Usuário:</span> {aluno.usuario}
+            <br />
+            <span>E-mail:</span> {aluno.email}
+            <br />
+            <button onClick={() => editarAluno(aluno)}>Editar Aluno</button>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }

@@ -1,16 +1,12 @@
 .formulario {
   width: 400px;
-  height: 450px;
+  height: 300px;
   border: 1px solid #eee;
 }
 
 .formulario .row {
   padding: 10px;
   display: flex;
-  /* justify-content: center;
-  align-items: center;
-  justify-items: center;
-  align-content: center; */
 }
 
 .formulario h3 {
