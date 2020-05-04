@@ -26,13 +26,15 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-      
+
       - name: Build Project
         run: npm run build
-      
-      - name: Copy files to Nginx
-        run: rm -rf /var/www/build_teste
-        run: mkdir /var/www/build_teste
-        run: cp -R build/* /var/www/build_teste
 
-      
+      - name: Remove Folder
+        run: rm -rf /var/www/build_teste
+
+      - name: Create Folder
+        run: mkdir /var/www/build_teste
+
+      - name: Copy files
+        run: cp -R build/* /var/www/build_teste
