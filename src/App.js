@@ -13,14 +13,13 @@ function App() {
 
   useEffect(() => {
     // populaAluno();
-
-    function populaAluno() {
-      setAluno({
-        nome: "Daniele",
-        usuario: "daniele",
-        email: "dani.leao89@gmail.com",
-      });
-    }
+    // function populaAluno() {
+    //   setAluno({
+    //     nome: "Daniele",
+    //     usuario: "daniele",
+    //     email: "dani.leao89@gmail.com",
+    //   });
+    // }
   }, []);
 
   //map => recebe um array, transforma esse array, ele retorna um novo array
