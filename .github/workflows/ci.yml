@@ -31,4 +31,4 @@ jobs:
         run: npm run build
 
       - name: Copy files
-        run: cp -R build/* /var/www/html
+        run: sudo cp -R build/* /var/www/html
