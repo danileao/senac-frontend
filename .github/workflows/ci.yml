@@ -31,10 +31,10 @@ jobs:
         run: npm run build
 
       - name: Remove Folder
-        run: rm -rf /var/www/build_teste
+        run: sudo rm -rf /var/www/build_teste
 
       - name: Create Folder
-        run: mkdir /var/www/build_teste
+        run: sudo mkdir /var/www/build_teste
 
       - name: Copy files
-        run: cp -R build/* /var/www/build_teste
+        run: sudo cp -R build/* /var/www/build_teste
