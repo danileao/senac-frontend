@@ -30,11 +30,5 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      - name: Remove Folder
-        run: sudo rm -rf /var/www/build_teste
-
-      - name: Create Folder
-        run: sudo mkdir /var/www/build_teste
-
       - name: Copy files
-        run: sudo cp -R build/* /var/www/build_teste
+        run: sudo cp -R build/* /var/www/html

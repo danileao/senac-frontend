@@ -80,7 +80,7 @@ function App() {
   return (
     <>
       <form className="formulario" onSubmit={handleCadastrar}>
-        <h3>Cadastro de Aluno</h3>
+        <h3>Cadastro de Aluno_</h3>
         <div className="row">
           <span>Nome</span>
           <input
