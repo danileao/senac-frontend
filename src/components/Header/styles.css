@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&family=Roboto&display=swap");
+
+header {
+  background: #000;
+}
+
+nav {
+  padding: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 20px;
+  color: #fff;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+nav a:hover {
+  color: rgb(92, 91, 91);
+}
