@@ -5,29 +5,29 @@ import "./styles.css";
 function Cadastro() {
   return (
     <div className="container">
+      <h3>Cadastro de Aluno</h3>
       <form>
-        <h3>Cadastro de Aluno</h3>
         <div className="row">
-          <span>Nome</span>
-          <input />
+          {/* <span>Nome</span> */}
+          <input placeholder="Nome" />
         </div>
         <div className="row">
-          <span>Matrícula</span>
-          <input />
+          {/* <span>Matrícula</span> */}
+          <input placeholder="Matrícula" />
         </div>
         <div className="row">
-          <span>E-mail</span>
-          <input />
+          {/* <span>E-mail</span> */}
+          <input placeholder="Nome" />
         </div>
         <div className="row">
-          <span>Senha</span>
-          <input />
+          {/* <span>Senha</span> */}
+          <input placeholder="Senha" />
         </div>
         <div className="row">
-          <span>Confirme a senha</span>
-          <input />
+          {/* <span>Confirme a senha</span> */}
+          <input placeholder="Confirme a senha" />
         </div>
-        <div className="row">
+        <div className="row button">
           <button>Cadastrar</button>
         </div>
       </form>

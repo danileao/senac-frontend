@@ -2,14 +2,20 @@
 
 .container {
   display: flex;
-  margin-top: 10px;
+  /* place-content: center; */
+  align-items: center;
+  height: calc(100vh - 54px);
+  background-image: linear-gradient(to right, rgb(78, 78, 78), rgb(0, 0, 0));
+
+  flex-direction: column;
 }
 
 form {
-  border: 1px solid #000;
+  background: rgb(60, 60, 60);
+  border: 1px solid rgb(156, 154, 154);
   border-radius: 10px;
-
   width: 500px;
+  padding: 20px;
 }
 
 form .row {
@@ -17,10 +23,10 @@ form .row {
   padding: 10px;
 }
 
-form h3 {
+.container h3 {
   font-family: "Roboto", sans-serif;
-  display: flex;
-  justify-content: center;
+  padding: 30px 0;
+  color: #fff;
 }
 
 form .row span {
@@ -32,20 +38,43 @@ form .row span {
 }
 
 form .row input {
-  width: 300px;
+  flex: 1;
   height: 30px;
   outline: none;
   padding-left: 10px;
-  font-size: 18px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid rgb(41, 41, 41);
+  background: #2b2b2b;
+  color: rgb(220, 220, 220);
+}
+
+form .row input::placeholder {
+  color: rgb(82, 80, 80);
+  font-size: 15px;
+}
+
+form .row input:focus {
+  border: 1px solid #e25d27;
+}
+
+.button {
+  justify-content: center;
 }
 
 form .row button {
+  /* display: flex; */
+  /* justify-content: center;
+  width: 250px; */
   flex: 1;
-  height: 30px;
+  font-size: 15px;
+  height: 35px;
   background: #e25d27;
   color: #fff;
   cursor: pointer;
   outline: none;
+  border: none;
+  border-radius: 10px;
 }
 
 form .row button:hover {
