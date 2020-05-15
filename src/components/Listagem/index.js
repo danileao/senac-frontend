@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 
 import api from "../../services/api";
 
@@ -8,16 +8,41 @@ function Listagem() {
   const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
 
-  useEffect(() => {
+  /**
+   * useMemo => memorizar um valor
+   * users.length => Tamanho do array
+   */
+
+  const loadUsers = useCallback(() => {
     api
       .get("/users")
       .then((response) => setUsers(response.data))
       .catch((error) => console.log(error));
   }, []);
 
+  useEffect(() => {
+    loadUsers();
+  }, [loadUsers]);
+
+  const callBackEdit = (dataFromChild) => {
+    const { tipoAcao } = dataFromChild;
+
+    if (tipoAcao === "sucessoEdit") {
+      loadUsers();
+      setCurrentUser(null);
+    } else if (tipoAcao === "closeModal") {
+      setCurrentUser(null);
+    }
+  };
+
+  const memoUserLength = useMemo(() => {
+    return users.length;
+  }, [users]);
+
   return (
     <div>
       <h3>Listagem de usuários</h3>
+      <h1>Quantidade de usuários {memoUserLength}</h1>
 
       <table>
         <thead>
@@ -44,7 +69,7 @@ function Listagem() {
         </tbody>
       </table>
 
-      {currentUser && <Editar usuario={currentUser} />}
+      {currentUser && <Editar usuario={currentUser} callBack={callBackEdit} />}
     </div>
   );
 }

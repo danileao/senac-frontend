@@ -8,4 +8,23 @@
 
   display: flex;
   flex-direction: column;
+
+  position: fixed;
+  top: 0;
+}
+
+.input {
+  padding: 10px;
+}
+
+.button {
+  margin-top: 10px;
+  height: 30px;
+  background: #7159c1;
+  color: #fff;
+  border: none;
+}
+
+.button:hover {
+  background: #8568e6;
 }

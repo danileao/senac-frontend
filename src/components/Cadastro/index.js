@@ -58,14 +58,39 @@ function Cadastro() {
   const verificaSenha = useCallback(() => {
     if (user.confirm_password !== user.password) {
       setMessageError("Senhas diferentes!");
+      return false;
     } else {
       setMessageError(null);
+      return true;
     }
   }, [user.confirm_password, user.password]);
+
+  const validation = useCallback(() => {
+    if (
+      !user.name ||
+      !user.username ||
+      !user.email ||
+      !user.password ||
+      !user.confirm_password
+    ) {
+      setResponseError("Algum campo não foi preenchido!");
+      return false;
+    }
+    setResponseError(null);
+    return true;
+  }, [user]);
 
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
+
+      if (!validation()) {
+        return;
+      }
+
+      if (!verificaSenha()) {
+        return;
+      }
 
       api
         .post("users", user)
@@ -75,7 +100,7 @@ function Cadastro() {
           setResponseError(error.response.data);
         });
     },
-    [history, user]
+    [history, user, validation, verificaSenha]
   );
 
   return (
@@ -116,6 +141,8 @@ function Cadastro() {
             name="password"
             autoComplete="new-password"
             type="password"
+            minLength="6"
+            maxLength="8"
             value={user.password}
             onChange={handleChange}
             placeholder="Senha"
@@ -125,6 +152,8 @@ function Cadastro() {
           <input
             name="confirm_password"
             type="password"
+            minLength="6"
+            maxLength="8"
             className={messageError && "errorMessage"}
             onChange={handleChange}
             onBlur={verificaSenha}
