@@ -105,6 +105,7 @@ function Cadastro() {
 
   return (
     <div className="container">
+      <div className="alert">Alerttt</div>
       <form onSubmit={handleSubmit}>
         <h3>Cadastro de Usuário</h3>
 

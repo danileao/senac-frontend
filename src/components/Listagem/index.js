@@ -1,12 +1,23 @@
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  useMemo,
+  useContext,
+} from "react";
 
 import api from "../../services/api";
 
 import Editar from "../Editar";
 
+import { UserContext } from "../Context/UserContext";
+
 function Listagem() {
   const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+
+  const userContext = useContext(UserContext);
+  console.log(userContext);
 
   /**
    * useMemo => memorizar um valor

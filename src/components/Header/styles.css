@@ -4,6 +4,10 @@ header {
   background: #000;
 }
 
+span {
+  color: #fff;
+}
+
 nav {
   padding: 15px;
 }

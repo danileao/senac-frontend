@@ -3,16 +3,20 @@ import { BrowserRouter } from "react-router-dom";
 
 import Routes from "./routes";
 
+import { UserProvider } from "./components/Context/UserContext";
+
 import Header from "./components/Header";
 
 import "./App.css";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes />
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <Header />
+        <Routes />
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 
